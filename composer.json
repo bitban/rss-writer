@@ -1,0 +1,32 @@
+{
+    "name": "bitban/bbnx-rss",
+    "description": "RSS publication library",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Bitban Technologies",
+            "email": "info@bitban.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Bitban\\BBNX\\Rss\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bitban\\BBNX\\Rss\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "jms/serializer": "^3.2",
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.11.16",
+        "phpunit/phpunit": "^8.3"
+    }
+}
