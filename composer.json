@@ -1,6 +1,6 @@
 {
-    "name": "bitban/bbnx-rss",
-    "description": "RSS publication library",
+    "name": "bitban/rss-writer",
+    "description": "RSS generation library",
     "type": "library",
     "license": "proprietary",
     "authors": [
@@ -13,12 +13,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Bitban\\BBNX\\Rss\\": "src/"
+            "Bitban\\RssWriter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bitban\\BBNX\\Rss\\Tests\\": "tests/"
+            "Bitban\\RssWriter\\Tests\\": "tests/"
         }
     },
     "require": {
