@@ -12,6 +12,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @Serializer\AccessType("public_method")
  * @Serializer\XmlRoot("rss")
  * @Serializer\XmlNamespace(uri="http://search.yahoo.com/mrss/", prefix="media")
+ * @Serializer\XmlNamespace(uri="http://purl.org/dc/elements/1.1/", prefix="dc")
  */
 class Rss
 {
