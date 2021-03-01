@@ -4,7 +4,7 @@
  * Todos los derechos reservados.
  */
 
-namespace Bitban\BBNX\Rss\Entities;
+namespace Bitban\RssWriter\Entities;
 
 use JMS\Serializer\Annotation as Serializer;
 
@@ -15,32 +15,32 @@ use JMS\Serializer\Annotation as Serializer;
 class Channel
 {
     /** @var string|null */
-    private $title;
+    protected $title;
 
     /** @var string|null */
-    private $link;
+    protected $link;
 
     /** @var string|null */
-    private $description;
+    protected $description;
 
     /** @var string|null */
-    private $language;
+    protected $language;
 
     /** @var string|null */
-    private $copyright;
+    protected $copyright;
 
     /** @var int|null */
-    private $ttl;
+    protected $ttl;
 
     /** @var ChannelImage */
-    private $image;
+    protected $image;
 
     /**
      * @var Item[]
      *
      * @Serializer\XmlList(inline = true, entry = "item")
      */
-    private $items = [];
+    protected $items = [];
 
     /**
      * @return string|null

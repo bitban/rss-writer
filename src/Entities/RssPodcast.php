@@ -13,10 +13,9 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @Serializer\AccessType("public_method")
  * @Serializer\XmlRoot("rss")
- * @Serializer\XmlNamespace(uri="http://search.yahoo.com/mrss/", prefix="media")
- * @Serializer\XmlNamespace(uri="http://purl.org/dc/elements/1.1/", prefix="dc")
+ * @Serializer\XmlNamespace(uri="http://www.itunes.com/dtds/podcast-1.0.dtd", prefix="itunes")
  */
-class Rss implements RssInterface
+class RssPodcast implements RssInterface
 {
     use RssTrait;
 }
