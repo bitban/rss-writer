@@ -4,9 +4,9 @@
  * Todos los derechos reservados.
  */
 
-namespace Bitban\RssWriter\Interfaces;
+namespace Bitban\BBNX\Rss\Interfaces;
 
-use Bitban\RssWriter\Entities\Channel;
+use Bitban\BBNX\Rss\Entities\Channel;
 
 interface RssInterface
 {

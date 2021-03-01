@@ -1,9 +1,9 @@
 <?php
 
-namespace Bitban\RssWriter\Traits;
+namespace Bitban\BBNX\Rss\Traits;
 
-use Bitban\RssWriter\Entities\Channel;
-use Bitban\RssWriter\Interfaces\RssInterface;
+use Bitban\BBNX\Rss\Entities\Channel;
+use Bitban\BBNX\Rss\Interfaces\RssInterface;
 use JMS\Serializer\Annotation as Serializer;
 
 /**

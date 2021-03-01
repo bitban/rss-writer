@@ -4,10 +4,9 @@
  * Todos los derechos reservados.
  */
 
-namespace Bitban\RssWriter\Services;
+namespace Bitban\BBNX\Rss\Services;
 
-use Bitban\RssWriter\Entities\Rss;
-use Bitban\RssWriter\Interfaces\RssInterface;
+use Bitban\BBNX\Rss\Interfaces\RssInterface;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;

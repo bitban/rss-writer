@@ -4,7 +4,7 @@
  * Todos los derechos reservados.
  */
 
-namespace Bitban\RssWriter\Entities;
+namespace Bitban\BBNX\Rss\Entities;
 
 use JMS\Serializer\Annotation as Serializer;
 

@@ -4,10 +4,10 @@
  * Todos los derechos reservados.
  */
 
-namespace Bitban\RssWriter\Entities;
+namespace Bitban\BBNX\Rss\Entities;
 
-use Bitban\RssWriter\Interfaces\RssInterface;
-use Bitban\RssWriter\Traits\RssTrait;
+use Bitban\BBNX\Rss\Interfaces\RssInterface;
+use Bitban\BBNX\Rss\Traits\RssTrait;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
