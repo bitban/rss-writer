@@ -13,6 +13,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @Serializer\XmlRoot("rss")
  * @Serializer\XmlNamespace(uri="http://search.yahoo.com/mrss/", prefix="media")
  * @Serializer\XmlNamespace(uri="http://purl.org/dc/elements/1.1/", prefix="dc")
+ * @Serializer\XmlNamespace(uri="http://www.w3.org/2005/Atom", prefix="atom")
  */
 class Rss
 {

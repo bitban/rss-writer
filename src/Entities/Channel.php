@@ -6,6 +6,7 @@
 
 namespace Bitban\RssWriter\Entities;
 
+use Bitban\RssWriter\Entities\AtomLink;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -34,6 +35,13 @@ class Channel
 
     /** @var ChannelImage */
     private $image;
+
+    /**
+     * @var AtomLink|null
+     * @Serializer\XmlElement(namespace="http://www.w3.org/2005/Atom")
+     * @Serializer\SerializedName("link")
+     */
+    private $atomLink;
 
     /**
      * @var Item[]
@@ -192,6 +200,22 @@ class Channel
         return $this;
     }
 
+    /**
+     * @return AtomLink|null
+     */
+    public function getAtomLink(): ?AtomLink
+    {
+        return $this->atomLink;
+    }
+
+    /**
+     * @param AtomLink|null $atomLink
+     */
+    public function setAtomLink(?AtomLink $atomLink): Channel
+    {
+        $this->atomLink = $atomLink;
+        return $this;
+    }
     public static function make()
     {
         return new static();

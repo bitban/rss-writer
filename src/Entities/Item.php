@@ -37,7 +37,7 @@ class Item
     /**
      * @var \DateTime|null
      *
-     * @Serializer\Type("DateTime<'D, d M y H:i:s O'>") # \DateTime::RFC822
+     * @Serializer\Type("DateTime<'D, d M Y H:i:s O'>") # \DateTime::RFC822
      */
     private $pubDate;
 
