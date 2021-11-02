@@ -25,7 +25,7 @@ class Guid
      *
      * @Serializer\XmlAttribute()
      */
-    private $isPermalink = true;
+    private $isPermaLink = true;
 
     public function getUrl(): ?string
     {
@@ -38,14 +38,14 @@ class Guid
         return $this;
     }
 
-    public function getIsPermalink(): bool
+    public function getIsPermaLink(): bool
     {
-        return $this->isPermalink;
+        return $this->isPermaLink;
     }
 
-    public function setIsPermalink(bool $isPermalink): Guid
+    public function setIsPermaLink(bool $isPermaLink): Guid
     {
-        $this->isPermalink = $isPermalink;
+        $this->isPermaLink = $isPermaLink;
         return $this;
     }
 

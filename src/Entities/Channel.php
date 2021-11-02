@@ -6,6 +6,7 @@
 
 namespace Bitban\BBNX\Rss\Entities;
 
+use Bitban\BBNX\Rss\Entities\AtomLink;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
@@ -15,32 +16,39 @@ use JMS\Serializer\Annotation as Serializer;
 class Channel
 {
     /** @var string|null */
-    protected $title;
+    private $title;
 
     /** @var string|null */
-    protected $link;
+    private $link;
 
     /** @var string|null */
-    protected $description;
+    private $description;
 
     /** @var string|null */
-    protected $language;
+    private $language;
 
     /** @var string|null */
-    protected $copyright;
+    private $copyright;
 
     /** @var int|null */
-    protected $ttl;
+    private $ttl;
 
     /** @var ChannelImage */
-    protected $image;
+    private $image;
+
+    /**
+     * @var AtomLink|null
+     * @Serializer\XmlElement(namespace="http://www.w3.org/2005/Atom")
+     * @Serializer\SerializedName("link")
+     */
+    private $atomLink;
 
     /**
      * @var Item[]
      *
      * @Serializer\XmlList(inline = true, entry = "item")
      */
-    protected $items = [];
+    private $items = [];
 
     /**
      * @return string|null
@@ -192,6 +200,22 @@ class Channel
         return $this;
     }
 
+    /**
+     * @return AtomLink|null
+     */
+    public function getAtomLink(): ?AtomLink
+    {
+        return $this->atomLink;
+    }
+
+    /**
+     * @param AtomLink|null $atomLink
+     */
+    public function setAtomLink(?AtomLink $atomLink): Channel
+    {
+        $this->atomLink = $atomLink;
+        return $this;
+    }
     public static function make()
     {
         return new static();

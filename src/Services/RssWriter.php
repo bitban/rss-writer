@@ -6,14 +6,14 @@
 
 namespace Bitban\BBNX\Rss\Services;
 
-use Bitban\BBNX\Rss\Interfaces\RssInterface;
+use Bitban\BBNX\Rss\Entities\Rss;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
 
 class RssWriter
 {
-    public function write(RssInterface $rss): string
+    public function write(Rss $rss): string
     {
         $serializerBuilder = SerializerBuilder::create();
         $serializerBuilder->setPropertyNamingStrategy(
