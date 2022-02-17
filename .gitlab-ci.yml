@@ -1,0 +1,48 @@
+---
+stages:
+  - version
+  - release
+
+version:
+  stage: version
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
+  script:
+    - release next-version --bump-patch > .next-version
+    - echo "some artifact using version " > artifact
+    - cat .next-version >> artifact
+    - release test-git || true
+    - release --gl-api https://gitlab.bitban.com/api/v4/ test-api
+    - release -v
+    - release help
+    - echo "RELEASE_URL=https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/$CI_JOB_ID/artifacts/release" > build_info
+    - echo "RELEASE_DESC=\"$(uname -mo) binary\"" >> build_info
+    - echo "RELEASE_SHA=$CI_COMMIT_SHA" >> build_info
+    - echo "RELEASE_VERSION=$(<.next-version)" >> build_info
+  artifacts:
+    paths:
+      - .next-version
+      - build_info
+      - artifact
+  only:
+    refs:
+      - master
+    variables:
+      - "$CI_COMMIT_MESSAGE !~ /^chore: version bump for/"
+
+release:
+  stage: release
+  image: registry.gitlab.com/juhani/go-semrel-gitlab:v0.21.1
+  script:
+    - rm -f release_info
+    - mv build_info release_info
+    - . release_info
+    - echo -n "update version information $RELEASE_VERSION ..."
+    - release -v
+    - release changelog
+    - "release --gl-api https://gitlab.bitban.com/api/v4/ --tag-prefix '' --bump-commit-tmpl 'chore: version bump for {{tag}}' commit-and-tag --create-tag-pipeline CHANGELOG.md release_info"
+    - release --gl-api https://gitlab.bitban.com/api/v4/ --ci-commit-tag $RELEASE_VERSION add-download-link --name release --url $RELEASE_URL --description "$RELEASE_DESC"
+  only:
+    refs:
+      - master
+    variables:
+      - "$CI_COMMIT_MESSAGE !~ /^chore: version bump for/"

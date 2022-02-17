@@ -23,13 +23,21 @@ class Item
     /** @var string|null */
     private $description;
 
+    /**
+     * @var string|null
+     *
+     * @Serializer\XmlElement(namespace="http://purl.org/dc/elements/1.1/")
+     * @Serializer\SerializedName("creator")
+     */
+    private $dcCreator;
+
     /** @var Guid|null */
     private $guid;
 
     /**
      * @var \DateTime|null
      *
-     * @Serializer\Type("DateTime<'D, d M y H:i:s O'>") # \DateTime::RFC822
+     * @Serializer\Type("DateTime<'D, d M Y H:i:s O'>") # \DateTime::RFC822
      */
     private $pubDate;
 
@@ -101,6 +109,17 @@ class Item
     public function setDescription(?string $description): Item
     {
         $this->description = $description;
+        return $this;
+    }
+
+    public function getDcCreator(): ?string
+    {
+        return $this->dcCreator;
+    }
+
+    public function setDcCreator(?string $dcCreator): Item
+    {
+        $this->dcCreator = $dcCreator;
         return $this;
     }
 
@@ -183,7 +202,7 @@ class Item
 
     public function getMediaKeywords(): ?string
     {
-        return !is_null($this->mediaKeywords) ? implode(",", $this->mediaKeywords) : null;
+        return (count($this->mediaKeywords) > 0) ? implode(",", $this->mediaKeywords) : null;
     }
 
     public function setMediaKeywords(array $mediaKeywords): Item
