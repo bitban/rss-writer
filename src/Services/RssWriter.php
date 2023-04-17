@@ -10,10 +10,11 @@ use Bitban\RssWriter\Entities\Rss;
 use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\SerializerBuilder;
+use Bitban\RssWriter\Interfaces\RssInterface;
 
 class RssWriter
 {
-    public function write(Rss $rss): string
+    public function write(RssInterface $rss): string
     {
         $serializerBuilder = SerializerBuilder::create();
         $serializerBuilder->setPropertyNamingStrategy(
