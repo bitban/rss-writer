@@ -79,6 +79,22 @@ class Item
      */
     private $mediaKeywords = [];
 
+    /**
+     * @var string|null
+     *
+     * @Serializer\XmlElement(namespace="http://search.yahoo.com/mrss/")
+     * @Serializer\SerializedName("credit")
+     */
+    private $mediaCredit;
+
+    /**
+     * @var string|null
+     *
+     * @Serializer\XmlElement(namespace="http://purl.org/rss/1.0/modules/content/")
+     * @Serializer\SerializedName("encoded")
+     */
+    private $contentEncoded;
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -208,6 +224,28 @@ class Item
     public function setMediaKeywords(array $mediaKeywords): Item
     {
         $this->mediaKeywords = $mediaKeywords;
+        return $this;
+    }
+
+    public function getMediaCredit(): ?string
+    {
+        return $this->mediaCredit;
+    }
+
+    public function setMediaCredit(?string $mediaCredit): Item
+    {
+        $this->mediaCredit = $mediaCredit;
+        return $this;
+    }
+
+    public function getContentEncoded(): ?string
+    {
+        return $this->contentEncoded;
+    }
+
+    public function setContentEncoded(?string $contentEncoded): Item
+    {
+        $this->contentEncoded = $contentEncoded;
         return $this;
     }
 
