@@ -44,6 +44,21 @@ class Channel
     private $atomLink;
 
     /**
+     * @var \DateTime|null
+     *
+     * @Serializer\Type("DateTime<'D, d M y H:i:s O'>") # \DateTime::RFC822
+     * @Serializer\Type("DateTime<'D, d M Y H:i:s O'>") # \DateTime::RFC822
+     */
+    private $lastBuildDate;
+
+    /**
+     * @var string|null
+     * @Serializer\XmlElement(namespace="http://webfeeds.org/rss/1.0")
+     * @Serializer\SerializedName("icon")
+     */
+    private $icon;
+
+    /**
      * @var Item[]
      *
      * @Serializer\XmlList(inline = true, entry = "item")
@@ -216,6 +231,43 @@ class Channel
         $this->atomLink = $atomLink;
         return $this;
     }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getLastBuildDate(): ?\DateTime
+    {
+        return $this->lastBuildDate;
+    }
+
+    /**
+     * @param \DateTime|null $lastBuildDate
+     * @return Channel
+     */
+    public function setLastBuildDate(?\DateTime $lastBuildDate): Channel
+    {
+        $this->lastBuildDate = $lastBuildDate;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param string|null $icon
+     * @return Channel
+     */
+    public function setIcon(?string $icon): Channel
+    {
+        $this->icon = $icon;
+        return $this;
+    }
+
     public static function make()
     {
         return new static();
