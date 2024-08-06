@@ -26,6 +26,14 @@ class Item
     /**
      * @var string|null
      *
+     * @Serializer\XmlElement(namespace="http://purl.org/rss/1.0/modules/content/")
+     * @Serializer\SerializedName("encoded")
+     */
+    private $contentEncoded;
+
+    /**
+     * @var string|null
+     *
      * @Serializer\XmlElement(namespace="http://purl.org/dc/elements/1.1/")
      * @Serializer\SerializedName("creator")
      */
@@ -87,13 +95,6 @@ class Item
      */
     private $mediaCredit;
 
-    /**
-     * @var string|null
-     *
-     * @Serializer\XmlElement(namespace="http://purl.org/rss/1.0/modules/content/")
-     * @Serializer\SerializedName("encoded")
-     */
-    private $contentEncoded;
 
     public function getTitle(): ?string
     {
@@ -125,6 +126,17 @@ class Item
     public function setDescription(?string $description): Item
     {
         $this->description = $description;
+        return $this;
+    }
+
+    public function getContentEncoded(): ?string
+    {
+        return $this->contentEncoded;
+    }
+
+    public function setContentEncoded(?string $contentEncoded): Item
+    {
+        $this->contentEncoded = $contentEncoded;
         return $this;
     }
 
@@ -235,17 +247,6 @@ class Item
     public function setMediaCredit(?string $mediaCredit): Item
     {
         $this->mediaCredit = $mediaCredit;
-        return $this;
-    }
-
-    public function getContentEncoded(): ?string
-    {
-        return $this->contentEncoded;
-    }
-
-    public function setContentEncoded(?string $contentEncoded): Item
-    {
-        $this->contentEncoded = $contentEncoded;
         return $this;
     }
 
