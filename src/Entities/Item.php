@@ -49,6 +49,13 @@ class Item
      */
     private $pubDate;
 
+    /** @var string|null
+     *
+     * @Serializer\XmlElement(namespace="http://purl.org/dc/terms/")
+     * @Serializer\SerializedName("issued")
+     */
+    private $dcTermsIssued;
+
     /** @var string|null */
     private $author;
 
@@ -247,6 +254,17 @@ class Item
     public function setMediaCredit(?string $mediaCredit): Item
     {
         $this->mediaCredit = $mediaCredit;
+        return $this;
+    }
+
+    public function getDcTermsIssued(): ?string
+    {
+        return $this->dcTermsIssued;
+    }
+
+    public function setDcTermsIssued(?string $dcTermsIssued): Item
+    {
+        $this->dcTermsIssued = $dcTermsIssued;
         return $this;
     }
 
