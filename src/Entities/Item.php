@@ -49,12 +49,12 @@ class Item
      */
     private $pubDate;
 
-    /** @var string|null
+    /**
+     * @var \DateTime|null
      *
-     * @Serializer\XmlElement(namespace="http://purl.org/dc/terms/")
-     * @Serializer\SerializedName("issued")
+     * @Serializer\Type("DateTime<'c'>") # # \DateTime::ISO8601
      */
-    private $dcTermsIssued;
+    private $dcTermsModified;
 
     /** @var string|null */
     private $author;
@@ -257,14 +257,14 @@ class Item
         return $this;
     }
 
-    public function getDcTermsIssued(): ?string
+    public function getDcTermsModified(): ?\DateTime
     {
-        return $this->dcTermsIssued;
+        return $this->dcTermsModified;
     }
 
-    public function setDcTermsIssued(?string $dcTermsIssued): Item
+    public function setDcTermsModified(?\DateTime $dcTermsModified): Item
     {
-        $this->dcTermsIssued = $dcTermsIssued;
+        $this->dcTermsModified = $dcTermsModified;
         return $this;
     }
 
