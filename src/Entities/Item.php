@@ -49,6 +49,13 @@ class Item
      */
     private $pubDate;
 
+    /**
+     * @var \DateTime|null
+     *
+     * @Serializer\Type("DateTime<'c'>") # # \DateTime::ISO8601
+     */
+    private $dcTermsModified;
+
     /** @var string|null */
     private $author;
 
@@ -247,6 +254,17 @@ class Item
     public function setMediaCredit(?string $mediaCredit): Item
     {
         $this->mediaCredit = $mediaCredit;
+        return $this;
+    }
+
+    public function getDcTermsModified(): ?\DateTime
+    {
+        return $this->dcTermsModified;
+    }
+
+    public function setDcTermsModified(?\DateTime $dcTermsModified): Item
+    {
+        $this->dcTermsModified = $dcTermsModified;
         return $this;
     }
 
