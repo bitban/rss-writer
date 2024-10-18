@@ -52,6 +52,8 @@ class Item
     /**
      * @var \DateTime|null
      *
+     * @Serializer\XmlElement(namespace="http://purl.org/dc/terms/")
+     * @Serializer\SerializedName("modified")
      * @Serializer\Type("DateTime<'c'>") # # \DateTime::ISO8601
      */
     private $dcTermsModified;
