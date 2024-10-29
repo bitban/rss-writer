@@ -14,9 +14,9 @@ interface RssInterface
 
     public function setVersion(?string $version): RssInterface;
 
-    public function getChannel(): ?Channel;
+    public function getChannel(): ?ChannelInterface;
 
-    public function setChannel(?Channel $channel): RssInterface;
+    public function setChannel(?ChannelInterface $channel): RssInterface;
 
     public static function make();
 }

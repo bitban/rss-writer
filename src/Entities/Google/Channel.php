@@ -1,12 +1,13 @@
 <?php
-/**
- * Copyright 2019 Bitban Technologies, S.L.
- * Todos los derechos reservados.
+/*
+ *
+ *  * Copyright 2024 Bitban Technologies, S.L.
+ *  * Todos los derechos reservados.
+ *
  */
 
-namespace Bitban\RssWriter\Entities;
+namespace Bitban\RssWriter\Entities\Google;
 
-use Bitban\RssWriter\Entities\AtomLink;
 use Bitban\RssWriter\Interfaces\ChannelInterface;
 use JMS\Serializer\Annotation as Serializer;
 
@@ -19,45 +20,22 @@ class Channel implements ChannelInterface
     /** @var string|null */
     private $title;
 
-    /** @var string|null */
+    /**
+     * @var string|null
+     *
+     * @Serializer\XmlElement(cdata=false)
+     */
     private $link;
 
-    /** @var string|null */
+    /**
+     * @var string|null
+     *
+     * @Serializer\XmlElement(cdata=false)
+     */
     private $description;
 
     /** @var string|null */
     private $language;
-
-    /** @var string|null */
-    private $copyright;
-
-    /** @var int|null */
-    private $ttl;
-
-    /** @var ChannelImage */
-    private $image;
-
-    /**
-     * @var AtomLink|null
-     * @Serializer\XmlElement(namespace="http://www.w3.org/2005/Atom")
-     * @Serializer\SerializedName("link")
-     */
-    private $atomLink;
-
-    /**
-     * @var \DateTime|null
-     *
-     * @Serializer\Type("DateTime<'D, d M y H:i:s O'>") # \DateTime::RFC822
-     * @Serializer\Type("DateTime<'D, d M Y H:i:s O'>") # \DateTime::RFC822
-     */
-    private $lastBuildDate;
-
-    /**
-     * @var string|null
-     * @Serializer\XmlElement(namespace="http://webfeeds.org/rss/1.0")
-     * @Serializer\SerializedName("icon")
-     */
-    private $icon;
 
     /**
      * @var Item[]
@@ -65,6 +43,13 @@ class Channel implements ChannelInterface
      * @Serializer\XmlList(inline = true, entry = "item")
      */
     private $items = [];
+
+    /**
+     * @var string|null
+     * @Serializer\XmlElement(namespace="http://webfeeds.org/rss/1.0")
+     * @Serializer\SerializedName("icon")
+     */
+    private $icon;
 
     /**
      * @return string|null
@@ -139,60 +124,6 @@ class Channel implements ChannelInterface
     }
 
     /**
-     * @return string|null
-     */
-    public function getCopyright(): ?string
-    {
-        return $this->copyright;
-    }
-
-    /**
-     * @param string|null $copyright
-     * @return Channel
-     */
-    public function setCopyright(?string $copyright): Channel
-    {
-        $this->copyright = $copyright;
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getTtl(): ?int
-    {
-        return $this->ttl;
-    }
-
-    /**
-     * @param int|null $ttl
-     * @return Channel
-     */
-    public function setTtl(?int $ttl): Channel
-    {
-        $this->ttl = $ttl;
-        return $this;
-    }
-
-    /**
-     * @return ChannelImage
-     */
-    public function getImage(): ?ChannelImage
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param ChannelImage $image
-     * @return Channel
-     */
-    public function setImage(?ChannelImage $image): Channel
-    {
-        $this->image = $image;
-        return $this;
-    }
-
-    /**
      * @return Item[]
      */
     public function getItems(): array
@@ -217,41 +148,6 @@ class Channel implements ChannelInterface
     }
 
     /**
-     * @return AtomLink|null
-     */
-    public function getAtomLink(): ?AtomLink
-    {
-        return $this->atomLink;
-    }
-
-    /**
-     * @param AtomLink|null $atomLink
-     */
-    public function setAtomLink(?AtomLink $atomLink): Channel
-    {
-        $this->atomLink = $atomLink;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime|null
-     */
-    public function getLastBuildDate(): ?\DateTime
-    {
-        return $this->lastBuildDate;
-    }
-
-    /**
-     * @param \DateTime|null $lastBuildDate
-     * @return Channel
-     */
-    public function setLastBuildDate(?\DateTime $lastBuildDate): Channel
-    {
-        $this->lastBuildDate = $lastBuildDate;
-        return $this;
-    }
-
-    /**
      * @return string|null
      */
     public function getIcon(): ?string
@@ -261,7 +157,7 @@ class Channel implements ChannelInterface
 
     /**
      * @param string|null $icon
-     * @return Channel
+     * @return \Bitban\RssWriter\Entities\Channel
      */
     public function setIcon(?string $icon): Channel
     {
