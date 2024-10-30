@@ -1,18 +1,25 @@
 <?php
+/*
+ *
+ *  * Copyright 2024 Bitban Technologies, S.L.
+ *  * Todos los derechos reservados.
+ *
+ */
 
-namespace Bitban\RssWriter\Traits;
+namespace Bitban\RssWriter\Entities;
 
-use Bitban\RssWriter\Entities\Channel;
+use Bitban\RssWriter\Entities\Google\Channel;
 use Bitban\RssWriter\Interfaces\ChannelInterface;
 use Bitban\RssWriter\Interfaces\RssInterface;
 use JMS\Serializer\Annotation as Serializer;
 
 /**
- * Copyright 2020 Bitban Technologies, S.L.
- * Todos los derechos reservados.
+ * @Serializer\AccessType("public_method")
+ * @Serializer\XmlRoot("rss")
+ * @Serializer\XmlNamespace(uri="http://search.yahoo.com/mrss/", prefix="media")
+ * @Serializer\XmlNamespace(uri="http://schemas.google.com/pcn/2020", prefix="g")
  */
-
-trait RssTrait
+class RssGoogleNewsShowcase implements RssInterface
 {
     /**
      * @var string
@@ -34,7 +41,7 @@ trait RssTrait
 
     /**
      * @param string|null $version
-     * @return self|RssInterface
+     * @return self
      */
     public function setVersion(?string $version): RssInterface
     {
@@ -52,7 +59,7 @@ trait RssTrait
 
     /**
      * @param Channel|null $channel
-     * @return self|RssInterface
+     * @return self
      */
     public function setChannel(?ChannelInterface $channel): RssInterface
     {
