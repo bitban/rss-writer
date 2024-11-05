@@ -27,14 +27,14 @@ class Channel implements ChannelInterface
      */
     private $link;
 
+    /** @var string|null */
+    private $description;
+
     /**
      * @var string|null
      *
      * @Serializer\XmlElement(cdata=false)
      */
-    private $description;
-
-    /** @var string|null */
     private $language;
 
     /**
