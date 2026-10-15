@@ -50,7 +50,7 @@ class PodcastItem extends Item
      * @var string|null
      *
      * @Serializer\XmlElement(namespace="http://www.itunes.com/dtds/podcast-1.0.dtd")
-     * @Serializer\SerializedName("summary")
+     * @Serializer\SerializedName("duration")
      */
     protected $duration;
 
@@ -58,7 +58,7 @@ class PodcastItem extends Item
      * @var string|null
      *
      * @Serializer\XmlElement(namespace="http://www.itunes.com/dtds/podcast-1.0.dtd")
-     * @Serializer\SerializedName("summary")
+     * @Serializer\SerializedName("keywords")
      */
     protected $keywords;
 
